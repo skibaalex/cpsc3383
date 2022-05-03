@@ -1,18 +1,18 @@
 export class Stack {
-    stack: string[]
+    stack: string[];
     constructor(){
-        this.stack = []
+        this.stack = [];
     }
 
-    push(el: string){
-        this.stack.push(el)
+    push(el: string): void{
+        this.stack.push(el);
     }
 
-    pop(el: string){
-        this.stack.push(el)
+    pop(): string | undefined{
+        return this.stack.pop();
     }
 
-    length(){
+    get length(): number{
         return this.stack.length;
     }
 
