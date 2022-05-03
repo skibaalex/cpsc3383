@@ -12,5 +12,9 @@ export class Stack {
         this.stack.push(el)
     }
 
+    length(){
+        return this.stack.length;
+    }
+
     //TODO: Add isValid Check
 }
