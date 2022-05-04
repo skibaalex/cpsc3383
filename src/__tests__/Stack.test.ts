@@ -1,4 +1,5 @@
 import { Stack } from '../Stack'
+import { parseSyntax } from '../utilis';
 
 describe('Stack Class login', () => {
     const stack = new Stack();
@@ -14,5 +15,17 @@ describe('Stack Class login', () => {
         stack.pop();
         const {length} = stack;
         expect(length).toEqual(2)
+    })
+})
+
+describe('Syntax Parsing', () => {
+    it('parses valid characters', () => {
+        const arr = [1,2,'+', 'sin', '&']
+        const parsedArr = parseSyntax(arr)
+        const stack = new Stack();
+        parsedArr.forEach(el => {
+            stack.push(el.toString())
+        })
+        expect(stack.length).toEqual(4)
     })
 })
