@@ -1,4 +1,5 @@
 import {Operation} from '../types';
+import { operators } from './Constants';
 
 
 /**
@@ -77,3 +78,11 @@ export const getValence = (operation: Operation): number => {
             throw new Error('Wrong input');
     }
 }
+
+export const isOperator = (token: string) => {
+    return token in operators
+  }
+  
+export const isValue = (token: string) => {
+    return  ! isNaN ( parseFloat ( token ) )  &&  isFinite ( Number(token) )
+  }

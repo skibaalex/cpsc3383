@@ -74,3 +74,22 @@ describe('Calculations', () => {
         expect(console.warn).toBeCalled()
     })
 })
+
+describe('Stack Calculations', () => { 
+    it('Calculate a valid RPN Input', () => {
+        const stack = new Stack(parseSyntax(['(', '1', '2', '+', ')', '2', '*']))
+        expect(stack.isValid()).toBeTruthy()
+        if(stack.isValid()){
+            const result = stack.calculate()
+            expect(result).toEqual(6)
+        }
+    })         
+    
+    it('Input is not valid check', () => {
+        const stack = new Stack(parseSyntax(['(', '1', '2', ')', '+', ')', '2', '*']))
+        const stack2 = new Stack(parseSyntax(['(', '1', '2', ')', '+', ')', '2', '*', '/']))
+        const result = stack.calculate()
+        expect(result).toBeNull()
+        expect(stack2.isValid()).toBeFalsy()
+    })
+})

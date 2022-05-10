@@ -52,7 +52,15 @@ If stack_size == 1: Report success
 Else              : Report failure
 ```
 
+#### Stack Calculation
+At this point we have a stack full with syntactically valid, now we have to calculate that the contents of the [Stack](#references).
 
+We will iterate over each individual element in out stack to see what action has to be taken 
+Order of operation
+ 1) [x] if the element is a number we will push it into an array of awaiting to be operated on.
+ 2) [x] if the element is an operation we will make sure that we have enough elements in the awaiting elements array that is required to preform the operation then preform it and put the value back into out stack.
+ 3) [x] if the element is an opening parentheses we will compute a new stack until the closing parentheses and calculate the value inside these parentheses in a recursive manner.
+ 4) [x] if byt the end of this function the length of the answers stack is not exactly ***1*** something went wrong.
 
 ## References
 1) [TypeScript](https://en.wikipedia.org/wiki/TypeScript) - TypeScript a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language.

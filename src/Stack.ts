@@ -1,5 +1,6 @@
 import { Operation } from "../types";
-import { getValence } from "./utilis";
+import { operators } from "./Constants";
+import { getValence, isOperator, isValue } from "./utilis";
 
 export class Stack {
     stack: Array<Operation | string>;
@@ -27,6 +28,7 @@ export class Stack {
             if(['(', ')'].includes(token))
             return
             //TODO: type system error
+            //@ts-ignore
             stackSize += 1 - getValence(token)
             if(stackSize === -1){
                 throw new Error('Invalid RPN Format')
@@ -38,4 +40,60 @@ export class Stack {
             return false
         }
     }
-}
+
+    calculate() {
+        const tokens = [...this.stack]
+        const stack: string[] = []
+
+        while (tokens.length) {
+          const token = tokens.shift()
+          if (isValue(token!)) {
+            stack.push(token!)
+          } else if (isOperator(token!)) {
+
+              switch(getValence(token as Operation)){
+                case 2: {
+                    const a = stack.pop()
+                    const  b = stack.pop()
+
+                    if (!a || !b)
+                        return null // Corrupted notation, wrong token order
+                        //@ts-ignore
+                        stack.push(operators[token as Operation](parseFloat(a), parseFloat(b)))
+                        break;
+                    }
+                    case 1: {
+                        const a = stack.pop()
+                        if (a == null)
+                        return null // Corrupted notation, wrong token order
+                    //@ts-ignore
+                    stack.push(operators[token as 'sin' | 'cos' | 'tan'](parseFloat(a)))
+                    break;
+                }
+              }
+
+          } else if(token === '('){
+              const index = tokens.findIndex(el => el === ')')
+              const values = new Stack(tokens.splice(0, index))
+              if(values.isValid()){
+                  const value = values.calculate()
+                  value && stack.push(value)
+              }
+
+          } else if(')') {
+
+            continue;
+            
+          } else {
+
+            return null // Unsupported token
+
+          }
+        }
+      
+        if (stack.length !== 1)
+          return null // Invalid stack length
+      
+        return stack.pop()
+      }
+    };
