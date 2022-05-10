@@ -1,7 +1,10 @@
+import { Operation } from "../types";
+import { getValence } from "./utilis";
+
 export class Stack {
-    stack: string[];
-    constructor(){
-        this.stack = [];
+    stack: Array<Operation | string>;
+    constructor(stack?: Array<Operation | string>){
+        this.stack = stack || [];
     }
 
     push(el: string): void{
@@ -16,5 +19,23 @@ export class Stack {
         return this.stack.length;
     }
 
-    //TODO: Add isValid Check
+    isValid(): boolean {
+        const stack = new Stack([...this.stack])
+        let stackSize = 0
+        stack.stack.forEach(token => {
+            // Take care of parentheses
+            if(['(', ')'].includes(token))
+            return
+            //TODO: type system error
+            stackSize += 1 - getValence(token)
+            if(stackSize === -1){
+                throw new Error('Invalid RPN Format')
+            }
+        })
+        if(stackSize === 1 ){
+            return true
+        } else {
+            return false
+        }
+    }
 }
