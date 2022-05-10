@@ -7,6 +7,24 @@ This is the final Assignment for class CPSC3383 Spring Semester
 The goal of this project is to create a calculator that will preform calculations in "Reverse Polish Notation",
 This is to demonstrate my ability design, implement and evaluate a computing-based solution to meet a given set of computing requirements
 
+## Getting Started
+
+```
+git clone https://github.com/skibaalex/cpsc3383.git
+
+npm install / yarn
+
+
+```
+to run unit tests
+
+```
+yarn test
+```
+
+the UI is available to watch [here](https://skibaalex.github.io/cpsc3383/)
+
+
 ## Description
 In the assignment's instruction it states 
 
