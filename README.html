@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="cpsc3383-assignment-11">CPSC3383 Assignment 1.1</h1>
+<p>This is the final Assignment for class CPSC3383 Spring Semester</p>
+<h2 id="motivation">Motivation</h2>
+<p>The goal of this project is to create a calculator that will preform calculations in &quot;Reverse Polish Notation&quot;,
+This is to demonstrate my ability design, implement and evaluate a computing-based solution to meet a given set of computing requirements</p>
+<h2 id="getting-started">Getting Started</h2>
+<pre class="hljs"><code><div>git clone https://github.com/skibaalex/cpsc3383.git
+
+npm install / yarn
+
+
+</div></code></pre>
+<p>to run unit tests</p>
+<pre class="hljs"><code><div>yarn test
+</div></code></pre>
+<p>the UI is available to watch <a href="https://skibaalex.github.io/cpsc3383/">here</a></p>
+<h2 id="description">Description</h2>
+<p>In the assignment's instruction it states</p>
+<pre class="hljs"><code><div>The program should make use of standard tools for creating/handling syntax
+analysis and parsing such as lex(1)3
+and yacc(1)4
+</div></code></pre>
+<p>Since this project is implemented in <a href="#references">TypeScript</a>, <a href="#references">Regex</a> in combination with a <a href="#references"><code>Stack</code> data structure</a> will be used to handle and parse the syntax of the calculations.
+The assignment requires testing, Unit tests will be implemented using <a href="#references">Jest Testing Library</a>.</p>
+<ul>
+<li>Although not required this project will be developed in a <a href="#references">TTD</a> approach to improve my skills in the process.</li>
+<li>The project will be managed in a kanban board on the github website.</li>
+<li>At the end the project will be compiled into JS and served over the web using <a href="#references">gh-pages</a>.</li>
+</ul>
+<h2 id="discussion">Discussion</h2>
+<p><strong>Table of contents</strong></p>
+<ul>
+<li><a href="#syntax-parsing">Syntax Parsing</a></li>
+<li><a href="#stack-validity-check">Stack Validity</a></li>
+<li><a href="#user-interface">User Interface</a></li>
+</ul>
+<h4 id="syntax-parsing">Syntax Parsing</h4>
+<p>The expected values to be received are any number in a string format.
+In addition there are 7 different mathematical operations that are allowed <code>+, -, /, *, sin, con, tan</code>, and expression grouping using <code>(, )</code>.</p>
+<p>Some use cases to take into consideration are</p>
+<ul>
+<li>Trigonometric operations only take <strong>one</strong> parameter as an input while regular operations take <strong>two</strong></li>
+<li>Any open parentheses has to have a corresponding closing parentheses.</li>
+<li>inside each parentheses has to accrue a valid operation.</li>
+<li>does the expression has to start with a parentheses?</li>
+</ul>
+<p>In order to parse the syntax all the strings will be tested against a regular expression and then stored into a stack, which is there will be test for validity.</p>
+<h4 id="stack-validity-check">Stack Validity Check</h4>
+<p>In order to check if a stack is a valid <a href="#references">RPN</a> we will use the algorithm provided in this <a href="https://stackoverflow.com/a/14507082/17130691">StackOverflow</a> Answer, due to a lack of my ability to come up with another more robust alternative.</p>
+<p>pseudo code for the algorithm</p>
+<pre class="hljs"><code><div>Set stack_size to 0;
+For Each token In expression:
+    Set stack_size to stack_size + 1 - valence(token)
+    If stack_size &lt;= 0: Report failure
+If stack_size == 1: Report success
+Else              : Report failure
+</div></code></pre>
+<h4 id="stack-calculation">Stack Calculation</h4>
+<p>At this point we have a stack full with syntactically valid, now we have to calculate that the contents of the <a href="#references">Stack</a>.</p>
+<p>We will iterate over each individual element in out stack to see what action has to be taken
+Order of operation</p>
+<ol>
+<li><input type="checkbox" id="checkbox0" checked="true"><label for="checkbox0">if the element is a number we will push it into an array of awaiting to be operated on.</label></li>
+<li><input type="checkbox" id="checkbox1" checked="true"><label for="checkbox1">if the element is an operation we will make sure that we have enough elements in the awaiting elements array that is required to preform the operation then preform it and put the value back into out stack.</label></li>
+<li><input type="checkbox" id="checkbox2" checked="true"><label for="checkbox2">if the element is an opening parentheses we will compute a new stack until the closing parentheses and calculate the value inside these parentheses in a recursive manner.</label></li>
+<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3">if byt the end of this function the length of the answers stack is not exactly </label><em><strong>1</strong></em> something went wrong.</li>
+</ol>
+<h4 id="user-interface">User Interface</h4>
+<p>For the user Interface we will use a simple html page using <a href="#references">Bootstrap</a>
+On the user interface page you can find a simple input field and a button that will calculate RPN.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://en.wikipedia.org/wiki/TypeScript">TypeScript</a> - TypeScript a programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript and adds optional static typing to the language.</li>
+<li><a href="https://en.wikipedia.org/wiki/Regular_expression">Regex</a> - Regular Expression</li>
+<li><a href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack</a> - &quot;First in last out&quot; data type</li>
+<li><a href="https://www.npmjs.com/package/jest">Jest</a> - Standard JS testing library</li>
+<li><a href="https://en.wikipedia.org/wiki/Test-driven_development">TTD</a> - Test Driven Development</li>
+<li><a href="https://en.wikipedia.org/wiki/GitHub#GitHub_Pages">gh-pages</a> - Static web hosting service offered by <a href="https://github.com">GitHub</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation</a></li>
+<li><a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/">Bootstrap</a> - Make HTML simple</li>
+</ol>
+
+</body>
+</html>
