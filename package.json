@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "tsc --watch",
+    "start": "tsc --watch && nodemon ./dist/assignment_1.1.js",
     "build": "tsc"
   },
   "keywords": [],
